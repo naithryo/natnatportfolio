@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathaniel Virtudez - Portfolio</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      scroll-behavior: smooth;
+      color: #ffffff;
+      background: linear-gradient(to right, #000428, #004e92);
+      overflow-x: hidden;
+    }
+
+    h1, h2, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px;
+      border: 2px solid #ffd700;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+
+    .container:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .section-content {
+      text-align: left;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .box-title {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    /* Hamburger Menu Styles */
+    .hamburger-menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .hamburger-menu div {
+      width: 30px;
+      height: 4px;
+      background: #ffd700;
+      margin: 6px 0;
+      transition: all 0.3s;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffd700;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+      transition: left 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    /* Buttons */
+    .buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      text-decoration: none;
+      background: #ffffff;
+      color: #004e92;
+      font-weight: bold;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 5px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .buttons a:hover {
+      background: #ffd700;
+      transform: scale(1.1);
+    }
+
+    /* Smooth Scroll Animation */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Profile Section */
+    .home {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .cat-emoji {
+      font-size: 5rem;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .roles {
+      font-size: 1.2em;
+      font-style: italic;
+      color: #ffd700;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffd700;
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 2px solid #ffd700;
+    }
+
+    #contact .contact-button {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #ffffff;
+      background: #004e92;
+      padding: 15px 30px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    #contact .contact-button:hover {
+      background: #ffd700;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      text-align: center;
+      padding: 20px;
+      color: #ffffff;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    /* Facebook Icon */
+    .facebook-icon {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #3b5998;
+      color: #ffffff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .facebook-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .facebook-icon i {
+      font-size: 1.5rem;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Hamburger Menu -->
+  <div class="hamburger-menu" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    Requirement in ITEC101 | Ms. Kristine Arida
+  </div>
+
+  <!-- Home Section -->
+  <div class="home">
+    <div class="cat-emoji">🐱</div>
+    <h1 class="title">Hi there! I'm Nathaniel Virtudez</h1>
+    <h2 class="roles">Student | Programmer | Designer</h2>
+    <div class="buttons">
+      <a href="#about">About Me</a>
+      <a href="#interests">Interests</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#contact">Contact Me</a>
+    </div>
+  </div>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-content">
+        <div class="box-title">About Me 🌻</div>
+        A 19-year-old information technology student. Raised in Brgy Laguan, Rizal, Laguna, born on June 30, 2005. I am a lifelong learner who enjoys picking up new skills. My interest in technology and desire to contribute to the industry are what motivate me to pursue a career in information technology.
+      </div>
+    </div>
+  </section>
+
+  <!-- Interests Section -->
+  <section id="interests">
+    <div class="container">
+      <div class="section-content">
+        <div class="box-title">Interests 🌻</div>
+        Beyond academics, I am also an artist. My love for arts, music, and animation has shaped how I see the world through a colorful and imaginative lens. From early on, I discovered a passion for drawing. Animation and animated films have been a major influence on my creativity.
+      </div>
+    </div>
+  </section>
+
+  <!-- Hobbies Section -->
+  <section id="hobbies">
+    <div class="container">
+      <div class="section-content">
+        <div class="box-title">Hobbies 🌻</div>
+        When I’m not immersed in my studies or drawing, I dedicate time to personal growth and relaxation. Physical fitness keeps me energized, while listening to my favorite artist Chase Atlantic. Watching animated films and shows also serves as a source of inspiration, encouraging me to dream big as an aspiring artist.  
+        Spending quality time with my girlfriend and families is another highlight of my life. Whether we’re exploring new places, sharing stories, or simply enjoying each other’s company.
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <a href="mailto:itnotryo@gmail.com" class="contact-button">Email Me</a>
+  </section>
+
+  <!-- Facebook Icon -->
+  <a href="https://www.facebook.com/itsnotryooooo?mibextid=ZbWKwL" target="_blank" class="facebook-icon">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    ©2024 Nathaniel Virtudez - Portfolio. All Rights Reserved. | <a href="#contact">Credits</a>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
